@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .models import Post
 
+"""
 # mock data: represent eahc post with a dictionaries
 posts = [
   {
@@ -15,11 +17,12 @@ posts = [
     'date_posted': 'August 28, 2020',
   }, 
 ]
+"""
 
 # each page also needs to be added to urls.py 
 def home(request): 
   context = {
-    'posts': posts # pass in the list of dictionaries to the posts key
+    'posts': Post.objects.all() # get posts from the database
   }
   return render(request, 'blog/home.html', context)
 
